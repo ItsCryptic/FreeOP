@@ -1,6 +1,8 @@
 package me.kevind.commands;
 
+import me.kevind.FreeOP;
 import me.kevind.utils.ColorUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -9,16 +11,22 @@ import org.bukkit.entity.Player;
 
 public final class GmcCommand implements CommandExecutor {
     @Override
-    public final boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
-        Player player = (Player) sender;
+    public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (sender instanceof Player) {
-            if (player.hasPermission("freeop.gmc")) {
+            Player player = (Player) sender;
+            if (args.length == 0) {
                 player.setGameMode(GameMode.CREATIVE);
-                player.sendMessage();
-            }else {
-                sender.sendMessage(ColorUtils.color("&cYou do not have permission to run this command!"));
+                player.sendMessage(ColorUtils.color(FreeOP.getPrefix() + "&eSet your gamemode to &cCreative"));
             }
-
+            if (args.length == 1) {
+                Player target = Bukkit.getPlayer(args[0]);
+                if (target != null) {
+                    target.setGameMode(GameMode.CREATIVE);
+                    player.sendMessage(ColorUtils.color(FreeOP.getPrefix() + "&eSet &c" + target.getDisplayName() + "&e's gamemode to &cCreative"));
+                } else {
+                    player.sendMessage(ColorUtils.color(FreeOP.getPrefix() + "&cThat player is not online!"));
+                }
+            }
         }
         return false;
     }

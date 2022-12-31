@@ -17,7 +17,7 @@ public final class FeedCommand implements CommandExecutor {
                 if (args.length == 0) {
                     player.setFoodLevel(20);
                     player.setSaturation(20);
-                    player.sendMessage(FreeOP.getPrefix() + "Your appetite has been sated");
+                    player.sendMessage(ColorUtils.color(FreeOP.getPrefix() + "Your appetite has been sated"));
                     return false;
                 }
                 if (args.length == 1) {
@@ -25,7 +25,7 @@ public final class FeedCommand implements CommandExecutor {
                     if (target != null) {
                         target.setFoodLevel(20);
                         target.setSaturation(20);
-                        player.sendMessage(ColorUtils.color(FreeOP.getPrefix() + target.getDisplayName() + "'s appetite has been sated"));
+                        player.sendMessage(ColorUtils.color(FreeOP.getPrefix() + target.getDisplayName() + "&e's appetite has been sated"));
                         return false;
                     }
                 }else {
