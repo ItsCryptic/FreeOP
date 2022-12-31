@@ -1,0 +1,15 @@
+name: FreeOP
+version: 1.0
+api-version: 1.19
+main: me.kevind.FreeOP
+commands:
+  gmc:
+    description: "Sets your gamemode to Creative"
+  gms:
+    description: "Sets your gamemode to Survival"
+  gma:
+    description: "Sets your gamemode to Adventure"
+  gmsp:
+    description: "Sets your gamemode to Spectator"
+  gm:
+    description: "Sets your gamemode when provided arguments"

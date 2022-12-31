@@ -1,0 +1,6 @@
+settings:
+ OPEnabled?: "true"
+messages:
+ Prefix: "&8[&c&lFreeOP&8] "
+ JoinMessage: "&8[&a+&8] %player%"
+ QuitMessage: "&8[&c-&8] %player%"
