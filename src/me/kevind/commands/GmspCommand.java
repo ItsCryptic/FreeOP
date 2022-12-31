@@ -16,13 +16,13 @@ public final class GmspCommand implements CommandExecutor {
             Player player = (Player) sender;
             if (args.length == 0)  {
                 player.setGameMode(GameMode.SPECTATOR);
-                player.sendMessage(ColorUtils.color(FreeOP.getPrefix() + "&eSet your gamemode to &cSurvival"));
+                player.sendMessage(ColorUtils.color(FreeOP.getPrefix() + "&eSet your gamemode to &cSpectator"));
             }
             if (args.length == 1) {
                 Player target = Bukkit.getPlayer(args[0]);
                 if (target != null) {
                     target.setGameMode(GameMode.SPECTATOR);
-                    player.sendMessage(ColorUtils.color(FreeOP.getPrefix() + "&eSet &c" + target.getDisplayName() + "&e's gamemode to &cSurvival"));
+                    player.sendMessage(ColorUtils.color(FreeOP.getPrefix() + "&eSet &c" + target.getDisplayName() + "&e's gamemode to &cSpectator"));
                 }else {
                     player.sendMessage(ColorUtils.color(FreeOP.getPrefix() + "&cThat player is not online!"));
                 }
