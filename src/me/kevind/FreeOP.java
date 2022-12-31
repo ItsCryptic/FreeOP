@@ -1,6 +1,7 @@
 package me.kevind;
 
 import me.kevind.commands.*;
+import me.kevind.listeners.BlockPlaceListener;
 import me.kevind.listeners.ChatListener;
 import me.kevind.listeners.JoinListener;
 import me.kevind.listeners.QuitListener;
@@ -23,6 +24,9 @@ public final class FreeOP extends JavaPlugin {
             getLogger().warning("Please install PlaceholderAPI!");
             Bukkit.getPluginManager().disablePlugin(this);
         }
+        getLogger().info("Setting gamerules...");
+        getServer().dispatchCommand(getServer().getConsoleSender(), "gamerule commandBlockOutput false");
+        getServer().dispatchCommand(getServer().getConsoleSender(), "gamerule sendCommandFeedback false");
         getLogger().info("Registering commands...");
         getCommand("gmc").setExecutor(new GmcCommand());
         getCommand("gms").setExecutor(new GmsCommand());
@@ -33,6 +37,7 @@ public final class FreeOP extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
         Bukkit.getPluginManager().registerEvents(new QuitListener(), this);
         Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
+        Bukkit.getPluginManager().registerEvents(new BlockPlaceListener(), this);
         saveDefaultConfig();
         getLogger().info("Done!");
     }

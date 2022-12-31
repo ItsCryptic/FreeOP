@@ -4,3 +4,5 @@ messages:
  Prefix: "&8[&c&lFreeOP&8] "
  JoinMessage: "&8[&a+&8] &7%player_displayname%"
  QuitMessage: "&8[&c-&8] &7%player_displayname%"
+ WelcomeMessage: "&eWelcome, &c%player_displayname%."
+ WelcomebackMessage: "&eWelcome back, &c%player_displayname%&e."

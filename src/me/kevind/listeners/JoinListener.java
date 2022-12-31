@@ -18,7 +18,11 @@ public final class JoinListener implements Listener {
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
         String joinmessage = FreeOP.getInstance().getConfig().getString("messages.JoinMessage");
+        String welcomebackmessage = FreeOP.getInstance().getConfig().getString("messages.WelcomebackMessage");
+        String welcomemessage = FreeOP.getInstance().getConfig().getString("messages.WelcomeMessage");
         joinmessage = PlaceholderAPI.setPlaceholders(e.getPlayer(), joinmessage);
+        welcomebackmessage = PlaceholderAPI.setPlaceholders(e.getPlayer(), welcomebackmessage);
+        welcomemessage = PlaceholderAPI.setPlaceholders(e.getPlayer(), welcomemessage);
         e.setJoinMessage(ColorUtils.color(joinmessage));
         if (Objects.equals(FreeOP.getInstance().getConfig().getString("settings.OPEnabled"), "yes")) {
             if (!player.isOp()) {
@@ -29,6 +33,12 @@ public final class JoinListener implements Listener {
             }
         }else if (Objects.equals(FreeOP.getInstance().getConfig().getString("settings.OPEnabled"), "no")) {
             getLogger().info("Not enabling giving operator on join!");
+        }
+
+        if (!(player.hasPlayedBefore())) {
+            player.sendMessage(ColorUtils.color(welcomemessage));
+        }else {
+            player.sendMessage(ColorUtils.color(welcomebackmessage));
         }
     }
 }
