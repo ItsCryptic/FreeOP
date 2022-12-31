@@ -2,6 +2,8 @@ name: FreeOP
 version: 1.0
 api-version: 1.19
 main: me.kevind.FreeOP
+depend:
+  - "PlaceholderAPI"
 commands:
   gmc:
     description: "Sets your gamemode to Creative"

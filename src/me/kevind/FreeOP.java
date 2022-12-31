@@ -17,6 +17,12 @@ public final class FreeOP extends JavaPlugin {
     }
     public void onEnable() {
         instance = this;
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            getLogger().info("Using PlaceholderAPI");
+        }else {
+            getLogger().warning("Please install PlaceholderAPI!");
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
         getLogger().info("Registering commands...");
         getCommand("gmc").setExecutor(new GmcCommand());
         getCommand("gms").setExecutor(new GmsCommand());
@@ -27,6 +33,8 @@ public final class FreeOP extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
         Bukkit.getPluginManager().registerEvents(new QuitListener(), this);
         Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
+        saveDefaultConfig();
+        getLogger().info("Done!");
     }
     public void onDisable() {
 
